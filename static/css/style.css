@@ -24,6 +24,12 @@ body {
     line-height: 40px;
 }
 
+/*navbar right button*/
+
+.navbar-right {
+    margin-right: 20px;
+}
+
 /* Custom page footer */
 .footer {
     padding-top: 19px;
