@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import EditModalWindow from './EditModalWindow.jsx';
 
 class TopNav extends React.Component {
     render() {
@@ -8,12 +7,12 @@ class TopNav extends React.Component {
             <Navbar>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <h1>To Do List</h1>
+                        <h1>To Do List sorted by title</h1>
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav pullRight>
-                    <NavItem pullRight>
-                        <EditModalWindow/>
+                    <NavItem >
+
                     </NavItem>
                 </Nav>
             </Navbar>
