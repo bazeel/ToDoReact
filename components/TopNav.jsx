@@ -1,5 +1,6 @@
 import React from 'react';
-import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import EditModalWindow from './EditModalWindow.jsx';
 
 class TopNav extends React.Component {
     render() {
@@ -12,7 +13,7 @@ class TopNav extends React.Component {
                 </Navbar.Header>
                 <Nav pullRight>
                     <NavItem pullRight>
-                        <Button  bsStyle="success">Add task</Button>
+                        <EditModalWindow/>
                     </NavItem>
                 </Nav>
             </Navbar>

@@ -5,7 +5,7 @@ class SingleTask extends React.Component {
 
     render() {
         return (
-            <Panel header={this.props.title} key={this.props.id}>
+            <Panel header={this.props.title} key={this.props.key}>
             <p>{this.props.content}</p>
                 <ButtonToolbar>
                     <Button bsStyle="primary" bsSize="xsmall">Edit</Button>
@@ -18,12 +18,12 @@ class SingleTask extends React.Component {
 }
 
 SingleTask.defaultProps = {
-    id: 1,
+    key: 1,
     title: 'Panel title',
     content: 'Panel content'
 };
 SingleTask.propTypes = {
-    id: React.PropTypes.number,
+    key: React.PropTypes.number,
     title: React.PropTypes.string,
     content: React.PropTypes.string
 };
