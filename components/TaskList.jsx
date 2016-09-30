@@ -13,12 +13,19 @@ class TaskList extends React.Component {
         //binding right scope
         this.saveHandler = this.saveHandler.bind(this);
         this.deleteHandler = this.deleteHandler.bind(this);
+        this.doneHandler = this.doneHandler.bind(this);
+    }
+    doneHandler(idDone, isDone) {
+        let indexDone = this.findIndexById(idDone);
+        let todos = this.state.todos;
+        todos[indexDone].done = !isDone;
+        this.setStateWrap(todos, false);
     }
     deleteHandler(idTodelete) {
         let indexToDelete = this.findIndexById(idTodelete);
         let todos = this.state.todos;
-        let newTodos = todos.splice(indexToDelete, 1);
-        this.setStateWrap(newTodos);
+        todos.splice(indexToDelete, 1);
+        this.setStateWrap(todos);
     }
     saveHandler(task={}) {
         if (!task || !task.content || !task.title ) {
@@ -57,9 +64,9 @@ class TaskList extends React.Component {
         return newId;
     }
 
-    setStateWrap(todos) {
+    setStateWrap(todos ,sort=true) {
         //ordering by title
-        if (todos.length > 1) {
+        if (todos.length > 1 && sort) {
             todos.sort(function(a, b) {
                 var nameA = a.title.toUpperCase(); // ignore upper and lowercase
                 var nameB = b.title.toUpperCase(); // ignore upper and lowercase
@@ -87,13 +94,19 @@ class TaskList extends React.Component {
                 <EditModalWindow saveHandler={this.saveHandler}/>
                 {
                     this.state.todos.map(function(todo) {
-                        return <SingleTask
-                                    key={todo.id}
-                                    taskKey={todo.id}
-                                    title={todo.title}
-                                    content={todo.content}
-                                    saveHandler={this.saveHandler}
-                                    deleteHandler={this.deleteHandler}/>
+                        return (
+                            <div className={(todo.done) ? "done-task" : ""} key={todo.id}>
+                                    <SingleTask
+                                            taskKey={todo.id}
+                                            title={todo.title}
+                                            content={todo.content}
+                                            saveHandler={this.saveHandler}
+                                            deleteHandler={this.deleteHandler}
+                                            doneHandler={this.doneHandler}
+                                            />
+                            </div>
+                        )
+
                     }.bind(this))
                 }
             </div>

@@ -8,10 +8,15 @@ class SingleTask extends React.Component {
         super(props);
         //binding right scope ( or can do it in render() )
         this.deleteButHandler = this.deleteButHandler.bind(this);
+        this.doneButHandler = this.doneButHandler.bind(this);
     }
 
     deleteButHandler() {
         this.props.deleteHandler(this.props.taskKey)
+    }
+
+    doneButHandler() {
+        this.props.doneHandler(this.props.taskKey, this.props.taskDone)
     }
 
     render() {
@@ -27,7 +32,7 @@ class SingleTask extends React.Component {
                         taskDone={this.props.done}
                         saveHandler={this.props.saveHandler}
                     />
-                    <Button bsStyle="primary" bsSize="xsmall">Done</Button>
+                    <Button bsStyle="primary" onClick={this.doneButHandler} bsSize="xsmall">Done</Button>
                     <Button bsSize="xsmall" onClick={this.deleteButHandler}>Delete</Button>
                 </ButtonToolbar>
             </Panel>
@@ -47,7 +52,8 @@ SingleTask.propTypes = {
     content: React.PropTypes.string,
     done: React.PropTypes.bool,
     saveHandler: React.PropTypes.func,
-    deleteHandler: React.PropTypes.func
+    deleteHandler: React.PropTypes.func,
+    doneHandler: React.PropTypes.func
 };
 
 export default SingleTask

@@ -24,7 +24,8 @@ class EditModalWindow extends React.Component {
         let task = {
             title: ReactDOM.findDOMNode(this.refs.taskTitle).value,
             content: ReactDOM.findDOMNode(this.refs.taskContent).value,
-            id: this.props.taskKey
+            id: this.props.taskKey,
+            done: this.props.taskDone
         }
 
         this.props.saveHandler(task);
