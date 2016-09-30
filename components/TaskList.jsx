@@ -6,10 +6,7 @@ class TaskList extends React.Component {
     constructor(props) {
         super(props);
         //initial state
-        this.state = {
-            todos: [
-            ]
-        };
+        this.state = JSON.parse(localStorage.getItem('state')) || {todos:[]};
         //binding right scope
         this.saveHandler = this.saveHandler.bind(this);
         this.deleteHandler = this.deleteHandler.bind(this);
@@ -85,8 +82,8 @@ class TaskList extends React.Component {
         this.syncLocalStorage(newState);
         this.setState(newState);
     }
-    syncLocalStorage() {
-
+    syncLocalStorage(state) {
+        localStorage.setItem('state', JSON.stringify(state));
     }
     render() {
         return (
