@@ -7,7 +7,7 @@ class TopNav extends React.Component {
             <Navbar>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <h1>To Do List ordered by title</h1>
+                        <h1>To Do List sorted in reverse order by task title</h1>
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav pullRight>

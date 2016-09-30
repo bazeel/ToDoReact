@@ -62,16 +62,16 @@ class TaskList extends React.Component {
     }
 
     setStateWrap(todos ,sort=true) {
-        //ordering by title
+        //sorted in reverse order by task title
         if (todos.length > 1 && sort) {
             todos.sort(function(a, b) {
                 var nameA = a.title.toUpperCase(); // ignore upper and lowercase
                 var nameB = b.title.toUpperCase(); // ignore upper and lowercase
                 if (nameA < nameB) {
-                    return -1;
+                    return 1;
                 }
                 if (nameA > nameB) {
-                    return 1;
+                    return -1;
                 }
                 // names must be equal
                 return 0;
